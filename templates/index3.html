@@ -1,0 +1,399 @@
+{% load static %}
+{% load extra_tags %}
+<html>
+<head>
+<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/fontawesome.css' %}">
+	<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+<style>
+
+body {
+	background: #FDFDFD
+	box-sizing: border-box;
+	display: grid;
+}
+
+#rcorners1 {
+	margin: auto;
+	position: relative;
+	top: 5px;
+	margin-bottom: 15px;
+	border-radius: 25px;
+	background: #F7F7F7;
+	padding: 20px;
+	width: 700px;
+	height: 450px;
+}
+
+#backgroundtext {
+	margin: 3px;
+	border-radius: 3px;
+	pointer-events: none; 
+	font-size: 18px; 
+	line-height: 20px;
+	color: #AAAAAA
+}
+
+#commentbackgroundtext {
+	margin: 10px auto;
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #ddd;
+	top: 10px;
+	background: #FFFFFF;
+	padding: 15px;
+	width: 650px;
+	font-size: 18px; 
+	height: 96px;
+	line-height: 20px;
+	overflow-y: auto;
+}
+
+#submit-btn {
+	width: 120px;
+	height: 40px;
+	border-radius: 3px;
+	background-color: #393939;
+	font-size: 15px;
+	color: #EEE;
+	cursor: pointer;
+	padding: 10px;
+	margin-top: 15px;
+	margin-left: 495px;
+}
+
+.inputtype {
+	width: 340px;
+	height: 34px;
+	text-indent: 28px;
+	writing-mode: horizontal-tb;
+	text-align: start;
+	margin: 5px;
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #ddd;
+	color: #AAA;
+}
+
+.starrr {
+	display: inline-block;
+	margin: 10px;
+	margin-top: 4px;
+}
+
+.starrr a {
+	font-size: 20px;
+	padding: 0 1px;
+	cursor: pointer;
+	color: #FFD119;
+	text-decoration: none; }
+
+.input-icons {
+	margin-top: 36px;
+}
+
+.input-icons i {
+	position: absolute;
+	opacity: 0.5;
+}
+
+.formdiv-2 {
+	margin-left: 270px;
+}
+
+.user {
+	left: 305px;
+	top: 309px;
+}
+
+.envelope {
+	left: 304px;
+	top: 353px;
+}
+
+#smiles {
+	margin-top: -9px;
+	margin-left: 6px;
+	padding: 6px;
+	width: 650px;
+	heigth: 70px;
+	background-color: #eee;
+}
+
+.comment-body {
+	overflow-wrap: anywhere;
+}
+
+.comment-body img {
+	width: 28;
+	height: 28;
+}
+
+.comment {
+	left: 300px;
+	top: 5px;
+	border-radius: 25px;
+	background: #F7F7F7;
+	padding: 20px;
+	margin: 10px;
+	display: inline-block;
+}
+
+.comment-wrapper {
+	margin: auto;
+	display: grid;
+	box-sizing: border-box;
+	width: 720px;
+}
+
+.comment-heading h3{
+	margin: 0px;
+	width: 50%;
+}
+</style>
+
+</head>
+<body>
+<div id="rcorners1">
+	<form method='POST' id="comment-form">
+		<div>
+			<div class="starrr" id="star2"></div>
+			<input type="hidden" name="rating" id="star2_input">
+			<div id="commentbackgroundtext" contenteditable="true" onfocus="backgroundtextFocus()" onblur="backgroundtextBlur()"><p id="backgroundtext">Оставить отзыв</p></div>
+			<input type="hidden" id="comment-input" name="comment">
+			<div id="smiles">
+				<a href="#"><img id="angry" src="{% static 'images/angry.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="anguished" src="{% static 'images/anguished.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="astonished" src="{% static 'images/astonished.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="blush" src="{% static 'images/blush.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="cold_sweat" src="{% static 'images/cold_sweat.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="confused" src="{% static 'images/confused.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="cry" src="{% static 'images/cry.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="disappointed" src="{% static 'images/disappointed.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="dizzy_face" src="{% static 'images/dizzy_face.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="fearful" src="{% static 'images/fearful.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="flushed" src="{% static 'images/flushed.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="frowning" src="{% static 'images/frowning.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="frowning2" src="{% static 'images/frowning2.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="grin" src="{% static 'images/grin.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="grinning" src="{% static 'images/grinning.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="heart_eyes" src="{% static 'images/heart_eyes.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="hugging" src="{% static 'images/hugging.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="hushed" src="{% static 'images/hushed.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="imp" src="{% static 'images/imp.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="innocent" src="{% static 'images/innocent.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="joy" src="{% static 'images/joy.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="kissing" src="{% static 'images/kissing.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="kissing_heart" src="{% static 'images/kissing_heart.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="laughing" src="{% static 'images/laughing.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="neutral_face" src="{% static 'images/neutral_face.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="rage" src="{% static 'images/rage.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="relaxed" src="{% static 'images/relaxed.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="relieved" src="{% static 'images/relieved.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="rofl" src="{% static 'images/rofl.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="rolling_eyes" src="{% static 'images/rolling_eyes.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="scream" src="{% static 'images/scream.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="sleeping" src="{% static 'images/sleeping.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="slight_frown" src="{% static 'images/slight_frown.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="slight_smile" src="{% static 'images/slight_smile.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="smiley" src="{% static 'images/smiley.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="smiling_imp" src="{% static 'images/smiling_imp.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="smirk" src="{% static 'images/smirk.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="sob" src="{% static 'images/sob.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="stuck_out_tongue" src="{% static 'images/stuck_out_tongue.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="stuck_out_tongue_winking_eye" src="{% static 'images/stuck_out_tongue_winking_eye.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="sunglasses" src="{% static 'images/sunglasses.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="sweat" src="{% static 'images/sweat.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="sweat_smile" src="{% static 'images/sweat_smile.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="tired_face" src="{% static 'images/tired_face.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="triumph" src="{% static 'images/triumph.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="unamused" src="{% static 'images/unamused.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="wink" src="{% static 'images/wink.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="worried" src="{% static 'images/worried.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="yum" src="{% static 'images/yum.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+				<a href="#"><img id="zipper_mouth" src="{% static 'images/zipper_mouth.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
+			</div>
+				<div class="formdiv-2 input-icons">
+					<i class="fal fa-user icon user" aria-hidden="true"></i>
+					<input type="text" class="inputtype" name="name" placeholder="Ваше имя">
+					<i class="fal fa-envelope icon envelope" aria-hidden="true"></i>
+					<input type="text" class="inputtype" name="email" placeholder="Почта">
+				</div>
+			</div>
+			<div id="submit-btn" onclick="submitComment()">Опубликовать</div>
+		{% csrf_token %}
+	</form>
+</div>
+	<div class="comment-wrapper">
+		{% for msg in object_list %}
+		<div class="comment">
+			<div class="comment-rating">
+				<div class='starrr'>{% for r in 0|range:msg.rating %}<a href="#" class="fa fa-star"></a>{% endfor %}</div>
+			</div>
+			<div class="comment-heading">
+				<h3 class="h3"><strong>{{ msg.name }}</strong></h3>
+				{{ msg.datetime_created }}
+			</div>
+			<div class="comment-body">
+				{{ msg.comment|safe }}
+			</div>
+			{% if user.is_authenticated %}
+				<div class="admin-message" style="margin-left:650px">
+					<a href="/delete/{{ msg.id }}">удалить</a>
+				</div>
+			{% endif %}
+		</div>
+    	{% endfor %}
+	</div>
+		<script>
+			var bt = document.getElementById('backgroundtext');
+			var cbt = document.getElementById('commentbackgroundtext');
+
+			var bgtext = '<p id="backgroundtext">Оставить отзыв</p>';
+
+			function backgroundtextFocus() {
+				if(typeof(bt) == 'object' && cbt.innerHTML == bgtext ){
+					cbt.innerHTML = '';
+				}
+			}
+
+			function backgroundtextBlur() {
+				if(cbt.innerHTML == ''){
+					cbt.innerHTML = bgtext;
+				}
+			}
+
+			function insertSmile(smile_id) {
+				if(cbt.innerHTML == bgtext){
+					cbt.innerHTML = '<img src="/static/images/' + smile_id + '.png" width="28" height="28">'
+				}
+				else{
+					cbt.innerHTML += '<img src="/static/images/' + smile_id + '.png" width="28" height="28">'
+				}
+				cbt.focus();
+				document.execCommand('selectAll', false, null);
+				document.getSelection().collapseToEnd();
+			}
+
+			function submitComment(){
+				document.getElementById('comment-input').value = document.getElementById('commentbackgroundtext').innerHTML;
+				document.getElementById('comment-form').submit();
+			}
+		</script>
+		<script src="{% static 'js/jquery.js' %}"></script>
+
+<!-- Stars -->
+		<script>
+			var slice = [].slice;
+
+			(function($, window) {
+			  var Starrr;
+			  window.Starrr = Starrr = (function() {
+				Starrr.prototype.defaults = {
+				  rating: void 0,
+				  max: 5,
+				  readOnly: false,
+				  emptyClass: 'fa fa-star-o',
+				  fullClass: 'fa fa-star',
+				  change: function(e, value) {}
+				};
+
+				function Starrr($el, options) {
+				  this.options = $.extend({}, this.defaults, options);
+				  this.$el = $el;
+				  this.createStars();
+				  this.syncRating();
+				  if (this.options.readOnly) {
+					return;
+				  }
+				  this.$el.on('mouseover.starrr', 'a', (function(_this) {
+					return function(e) {
+					  return _this.syncRating(_this.getStars().index(e.currentTarget) + 1);
+					};
+				  })(this));
+				  this.$el.on('mouseout.starrr', (function(_this) {
+					return function() {
+					  return _this.syncRating();
+					};
+				  })(this));
+				  this.$el.on('click.starrr', 'a', (function(_this) {
+					return function(e) {
+					  e.preventDefault();
+					  return _this.setRating(_this.getStars().index(e.currentTarget) + 1);
+					};
+				  })(this));
+				  this.$el.on('starrr:change', this.options.change);
+				}
+
+				Starrr.prototype.getStars = function() {
+				  return this.$el.find('a');
+				};
+
+				Starrr.prototype.createStars = function() {
+				  var j, ref, results;
+				  results = [];
+				  for (j = 1, ref = this.options.max; 1 <= ref ? j <= ref : j >= ref; 1 <= ref ? j++ : j--) {
+					results.push(this.$el.append("<a href='#' />"));
+				  }
+				  return results;
+				};
+
+				Starrr.prototype.setRating = function(rating) {
+				  if (this.options.rating === rating) {
+					rating = void 0;
+				  }
+				  this.options.rating = rating;
+				  this.syncRating();
+				  return this.$el.trigger('starrr:change', rating);
+				};
+
+				Starrr.prototype.getRating = function() {
+				  return this.options.rating;
+				};
+
+				Starrr.prototype.syncRating = function(rating) {
+				  var $stars, i, j, ref, results;
+				  rating || (rating = this.options.rating);
+				  $stars = this.getStars();
+				  results = [];
+				  for (i = j = 1, ref = this.options.max; 1 <= ref ? j <= ref : j >= ref; i = 1 <= ref ? ++j : --j) {
+					results.push($stars.eq(i - 1).removeClass(rating >= i ? this.options.emptyClass : this.options.fullClass).addClass(rating >= i ? this.options.fullClass : this.options.emptyClass));
+				  }
+				  return results;
+				};
+
+				return Starrr;
+
+			  })();
+			  return $.fn.extend({
+				starrr: function() {
+				  var args, option;
+				  option = arguments[0], args = 2 <= arguments.length ? slice.call(arguments, 1) : [];
+				  return this.each(function() {
+					var data;
+					data = $(this).data('starrr');
+					if (!data) {
+					  $(this).data('starrr', (data = new Starrr($(this), option)));
+					}
+					if (typeof option === 'string') {
+					  return data[option].apply(data, args);
+					}
+				  });
+				}
+			  });
+			})(window.jQuery, window);
+
+			var $s2input = $('#star2_input');
+			$('#star2').starrr({
+			  max: 5,
+			  rating: $s2input.val(),
+			  change: function(e, value){
+				$s2input.val(value).trigger('input');
+			  }
+			});
+		</script>
+</body>
+</html>

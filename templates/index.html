@@ -1,0 +1,674 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Welcome to my guestbook!</title>
+<style type="text/css">
+body
+{
+   font-family: Tahoma;
+   font-weight: normal;
+   font-size: 13px;
+   line-height: 1.4285;
+   margin: 0;
+   background-color: #FFFFFF;
+   color: #555555;
+}
+b, strong 
+{
+   font-weight: bold;
+}
+*
+{
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+html 
+{
+   font-family: Tahoma;
+   -webkit-text-size-adjust: 100%;
+   -ms-text-size-adjust: 100%;
+}
+button, html input[type='button'], input[type='reset'], input[type='submit'] 
+{
+   -webkit-appearance: button;
+   cursor: pointer;
+}
+button, input, optgroup, select, textarea 
+{
+   margin: 0;
+   font: inherit;
+   color: inherit;
+}
+textarea 
+{
+   overflow: auto;
+}
+input 
+{
+   line-height: normal;
+}
+*::before, *::after 
+{
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+.container 
+{
+   padding-right: 15px;
+   padding-left: 15px;
+   margin-right: auto;
+   margin-left: auto;
+}
+.row 
+{
+   margin-right: -15px;
+   margin-left: -15px;
+}
+.clearfix::before, .clearfix::after, .dl-horizontal dd::before, .dl-horizontal dd::after, .container::before, .container::after, .container-fluid::before, .container-fluid::after, .row::before, .row::after, .form-horizontal .form-group::before, .form-horizontal .form-group::after, .btn-toolbar::before, .btn-toolbar::after, .btn-group-vertical > .btn-group::before, .btn-group-vertical > .btn-group::after, .nav::before, .nav::after, .navbar::before, .navbar::after, .navbar-header::before, .navbar-header::after, .navbar-collapse::before, .navbar-collapse::after, .pager::before, .pager::after, .panel-body::before, .panel-body::after, .modal-header::before, .modal-header::after, .modal-footer::before, .modal-footer::after 
+{
+   display: table;
+   content: " ";
+}
+.clearfix::after, .dl-horizontal dd::after, .container::after, .container-fluid::after, .row::after, .form-horizontal .form-group::after, .btn-toolbar::after, .btn-group-vertical > .btn-group::after, .nav::after, .navbar::after, .navbar-header::after, .navbar-collapse::after, .pager::after, .panel-body::after, .modal-header::after, .modal-footer::after 
+{
+   clear: both;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 
+{
+   position: relative;
+   min-height: 1px;
+   padding-right: 15px;
+   padding-left: 15px;
+}
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 
+{
+   float: left;
+}
+.col-xs-12 
+{
+   width: 100%;
+}
+html
+{
+   font-size: 10px;
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.form-group
+{
+   margin-bottom: 15px;
+}
+button 
+{
+   overflow: visible;
+}
+button, select 
+{
+   text-transform: none;
+}
+input, button, select, textarea 
+{
+   font-family: inherit;
+   font-size: inherit;
+   line-height: inherit;
+}
+.btn 
+{
+   display: inline-block;
+   padding: 6px 12px;
+   margin-bottom: 0px;
+   font-weight: normal;
+   font-size: 13px;
+   line-height: 1.4285;
+   text-align: center;
+   white-space: nowrap;
+   vertical-align: middle;
+   -ms-touch-action: manipulation;
+   touch-action: manipulation;
+   cursor: pointer;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   background-image: none;
+   border: 1px solid transparent;
+   border-radius: 4px;
+}
+.btn-success 
+{
+   color: #FFFFFF;
+   background-color: #5CB85C;
+   border-color: #4CAE4C;
+}
+label
+{
+   display: inline-block;
+   max-width: 100%;
+   margin-bottom: 5px;
+   font-weight: bold;
+}
+.form-control 
+{
+   display: block;
+   width: 100%;
+   height: 34px;
+   padding: 6px 12px;
+   font-size: 13px;
+   line-height: 1.4285;
+   color: #555555;
+   background-color: #FFFFFF;
+   background-image: none;
+   border: 1px solid #CCCCCC;
+   border-radius: 4px;
+   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+   box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075);
+   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.form-control:focus 
+{
+   border-color: #66AFE9;
+   outline: 0;
+   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102,175,233,0.60);
+   box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+}
+textarea.form-control 
+{
+   height: auto;
+}
+:-ms-input-placeholder.form-control 
+{
+   color: #999;
+}
+.text-center 
+{
+   text-align: center;
+}
+.alert 
+{
+   padding: 15px;
+   margin-bottom: 20px;
+   border: 1px solid transparent;
+   border-radius: 4px;
+}
+.alert-info 
+{
+   color: #31708f;
+   background-color: #d9edf7;
+   border-color: #bce8f1;
+}
+.alert-danger 
+{
+   color: #a94442;
+   background-color: #f2dede;
+   border-color: #ebccd1;
+}
+h1, h2, h3, h4, h5, h6 
+{
+   margin-top: 0px !important;
+   margin-bottom: 0px !important;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 
+{
+   font-family: inherit;
+   font-weight: 500;
+   line-height: 1.1;
+   color: inherit;
+}
+h1, .h1 
+{
+   font-size: 16px;
+   color: #4D4D4D;
+   font-weight: bold;
+   text-align: center;
+}
+h3, .h3 
+{
+   font-size: 13px;
+   font-weight: bold;
+}
+hr 
+{
+   height: 0px;
+   -webkit-box-sizing: content-box;
+   -moz-box-sizing: content-box;
+   box-sizing: content-box;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   border: 0;
+   border-top: 1px solid    border-color: #337AB7;
+}
+.panel-group 
+{
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+.panel-body 
+{
+   padding: 15px;
+   font-size: 13px;
+   color: #666666;
+}
+.panel 
+{
+   margin-bottom: 20px;
+   background-color: #FFFFFF;
+   border: 1px solid transparent;
+   border-radius: 4px;
+   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+   box-shadow: 0px 1px 1px rgba(0,0,0,0.05);
+}
+.panel-info 
+{
+   border-color: #337AB7;
+}
+.panel-group .panel 
+{
+   margin-bottom: 0px;
+   border-radius: 4px;
+}
+.panel-group .panel + .panel 
+{
+   margin-top: 5px;
+}
+.panel-heading
+{
+   padding: 10px 15px;
+   border-bottom: 1px solid transparent;
+   border-top-left-radius: 3px;
+   border-top-right-radius: 3px;
+}
+.panel-group .panel-heading 
+{
+   border-bottom: 0;
+}
+.panel-info > .panel-heading 
+{
+   color: #FFFFFF;
+   background-color: #337AB7;
+   border-color: #337AB7;
+}
+.pagination
+{
+   display: inline-block;
+   list-style: none;
+   padding: 0;
+   border-radius: 4px;
+   font-weight: normal;
+   font-size: 0;
+}
+.pagination > li
+{
+   display: inline;
+   font-size: 13px;
+}
+.pagination > li > a, .pagination > li > span
+{
+   position: relative;
+   float: left;
+   padding: 6px 12px;
+   text-decoration: none;
+   background-color: #FFFFFF;
+   border: 1px #337AB7 solid;
+   background-color: #337AB7;
+   margin-left: -1px;
+}
+.pagination > li:first-child > a, .pagination > li:first-child > span
+{
+   margin-left: 0;
+   -webkit-border-bottom-left-radius: 4px;
+   -moz-border-bottom-left-radius: 4px;
+   border-bottom-left-radius: 4px;
+   -webkit-border-top-left-radius: 4px;
+   -moz-border-top-left-radius: 4px;
+   border-top-left-radius: 4px;
+}
+.pagination > li:last-child > a, .pagination > li:last-child > span
+{
+   -webkit-border-bottom-right-radius: 4px;
+   -moz-border-bottom-right-radius: 4px;
+   border-bottom-right-radius: 4px;
+   -webkit-border-top-right-radius: 4px;
+   -moz-border-top-right-radius: 4px;
+   border-top-right-radius: 4px;
+}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus
+{
+   z-index: 2;
+   background-color: #337AB7;
+   border-color: #337AB7;
+   color: #FFFFFF;
+   cursor: default;
+}
+.pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus 
+{
+   background-color: #FFFFFF;
+   color: #777777;
+   cursor: not-allowed;
+}
+.navbar 
+{
+   position: relative;
+   min-height: 50px;
+   margin-bottom: 20px;
+   border: 1px solid transparent;
+}
+.navbar-default 
+{
+   border-color: #E7E7E7;
+}
+.navbar, .navbar-default 
+{
+   padding-top: 20px;
+   padding-bottom: 20px;
+   background-color: #FFFFFF;
+}
+.container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse 
+{
+   margin-right: -15px;
+   margin-left: -15px;
+}
+.collapse 
+{
+   display: none;
+}
+.navbar-collapse 
+{
+   padding-right: 15px;
+   padding-left: 15px;
+   overflow-x: visible;
+   -webkit-overflow-scrolling: touch;
+   border-top: 1px solid transparent;
+   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+   box-shadow: inset 0px 1px 0px rgba(255,255,255,0.1);
+}
+.collapse.in 
+{
+   display: block;
+}
+.navbar-collapse.in 
+{
+   overflow-y: auto;
+}
+.collapsing 
+{
+   position: relative;
+   height: 0;
+   overflow: hidden;
+   -webkit-transition: height .35s ease;
+   transition: height .35s ease;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form 
+{
+   border-color: #E7E7E7;
+}
+ul, ol 
+{
+   margin-top: 0px;
+   margin-bottom: 10px;
+}
+.nav 
+{
+   padding-left: 0px;
+   margin-bottom: 0px;
+   list-style: none;
+   font-size: 13px;
+   font-weight: bold;
+}
+.navbar-nav 
+{
+   margin: 7.5px -15px;
+}
+.nav > li 
+{
+   position: relative;
+   display: block;
+}
+a 
+{
+   color: #FFFFFF;
+   text-decoration: none;
+}
+.nav > li > a 
+{
+   position: relative;
+   display: block;
+   padding: 10px 15px;
+}
+.navbar-nav > li > a 
+{
+   padding-top: 10px;
+   padding-bottom: 10px;
+   line-height: 20px;
+}
+.navbar-default .navbar-nav > li > a, .admin > a 
+{
+   color: #4D4D4D;
+}
+.navbar-toggle 
+{
+   position: relative;
+   float: right;
+   padding: 9px 10px;
+   margin-top: 8px;
+   margin-right: 15px;
+   margin-bottom: 8px;
+   background-color: transparent;
+   background-image: none;
+   border: 1px solid transparent;
+   border-radius: 4px;
+}
+.navbar-default .navbar-toggle 
+{
+   border-color: #4D4D4D;
+}
+.navbar-brand 
+{
+   float: left;
+   height: 50px;
+   padding: 15px 15px;
+   font-size: 18px;
+   line-height: 20px;
+}
+.navbar-brand 
+{
+   font-size: 22px;
+}
+.navbar-default .navbar-brand 
+{
+   color: #4D4D4D;
+}
+.sr-only 
+{
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   padding: 0;
+   margin: -1px;
+   overflow: hidden;
+   clip: rect(0px, 0px, 0px, 0px);
+   border: 0;
+}
+.navbar-toggle .icon-bar 
+{
+   display: block;
+   width: 22px;
+   height: 2px;
+   border-radius: 1px;
+}
+.navbar-toggle .icon-bar + .icon-bar 
+{
+   margin-top: 4px;
+}
+.navbar-default .navbar-toggle .icon-bar 
+{
+   background-color: #4D4D4D;
+}
+.emoji
+{
+   border-width: 0;
+   width: 20px;
+   height: 20px;
+}
+@media all and (min-width:1024px)
+{
+.navbar
+{
+   border-radius: 4px;
+}
+.navbar-header 
+{
+   float: left;
+}
+.navbar-collapse 
+{
+   width: auto;
+   border-top: 0;
+   -webkit-box-shadow: none;
+   box-shadow: none;
+}
+.navbar-right 
+{
+   float: right !important;
+   margin-right: -15px;
+}
+.navbar-collapse.collapse 
+{
+   display: block !important;
+   height: auto !important;
+   padding-bottom: 0px;
+   overflow: visible !important;
+}
+.container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse 
+{
+   margin-right: 0px;
+   margin-left: 0px;
+}
+.navbar-nav 
+{
+   float: left;
+   margin: 0;
+}
+.navbar-nav > li 
+{
+   float: left;
+}
+.navbar-nav > li > a 
+{
+   padding-top: 15px;
+   padding-bottom: 15px;
+}
+.navbar-toggle 
+{
+   display: none;
+}
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand 
+{
+   margin-left: -15px;
+}
+}
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="js/collapse.js"></script>
+<script type="text/javascript" src="js/dropdown.js"></script>
+<script type="text/javascript" src="js/transition.js"></script>
+</head>
+<body>
+<div class="navbar navbar-default">
+   <div class="container">
+     <div class="navbar-header">
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Bootstrap Guestbook (save disabled)</a></div>
+        <div class="collapse navbar-collapse" id="navbar">
+           <ul class="nav navbar-nav navbar-right">
+<li><a href="guestbook.php">Home</a></li><li><a href="guestbook.php?admin=login">Admin login</a></li>           </ul>
+        </div>
+      </div>
+   </div>
+</div>
+<div class="container">
+<form action="" method="post">{% csrf_token %}
+<input type="hidden" name="form" value="sign-guestbook">
+<div class="form-group">
+<label for="name">Name:</label>
+<input name="name" class="form-control" id="name" required="" type="text" maxlength="50" placeholder="Name (required)">
+</div>
+<div class="form-group">
+<label for="email">Email Address:</label>
+<input name="email" class="form-control" id="email"  required="" type="email" maxlength="50" placeholder="Email Address (required)">
+</div>
+<div class="form-group">
+<label for="comment">Comment:</label>
+<textarea name="comment" class="form-control" id="comment"  required="" maxlength="500" placeholder="Comment (required)" rows="5"></textarea>
+</div>
+<div>
+<a href="#" onclick="document.getElementById('comment').value += ':angry:';return false;"><img class="emoji" src="images/angry.png" alt="angry" title="angry" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':anguished:';return false;"><img class="emoji" src="images/anguished.png" alt="anguished" title="anguished" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':astonished:';return false;"><img class="emoji" src="images/astonished.png" alt="astonished" title="astonished" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':blush:';return false;"><img class="emoji" src="images/blush.png" alt="blush" title="blush" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':cold_sweat:';return false;"><img class="emoji" src="images/cold_sweat.png" alt="cold sweat" title="cold sweat" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':confused:';return false;"><img class="emoji" src="images/confused.png" alt="confused" title="confused" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':cry:';return false;"><img class="emoji" src="images/cry.png" alt="cry" title="cry" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':disappointed:';return false;"><img class="emoji" src="images/disappointed.png" alt="disappointed" title="disappointed" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':dizzy_face:';return false;"><img class="emoji" src="images/dizzy_face.png" alt="dizzy face" title="dizzy face" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':fearful:';return false;"><img class="emoji" src="images/fearful.png" alt="fearful" title="fearful" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':flushed:';return false;"><img class="emoji" src="images/flushed.png" alt="flushed" title="flushed" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':frowning:';return false;"><img class="emoji" src="images/frowning.png" alt="frowning" title="frowning" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':frowning2:';return false;"><img class="emoji" src="images/frowning2.png" alt="frowning2" title="frowning2" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':grin:';return false;"><img class="emoji" src="images/grin.png" alt="grin" title="grin" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':grinning:';return false;"><img class="emoji" src="images/grinning.png" alt="grinning" title="grinning" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':heart_eyes:';return false;"><img class="emoji" src="images/heart_eyes.png" alt="heart eyes" title="heart eyes" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':hugging:';return false;"><img class="emoji" src="images/hugging.png" alt="hugging" title="hugging" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':hushed:';return false;"><img class="emoji" src="images/hushed.png" alt="hushed" title="hushed" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':imp:';return false;"><img class="emoji" src="images/imp.png" alt="imp" title="imp" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':innocent:';return false;"><img class="emoji" src="images/innocent.png" alt="innocent" title="innocent" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':joy:';return false;"><img class="emoji" src="images/joy.png" alt="joy" title="joy" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':kissing:';return false;"><img class="emoji" src="images/kissing.png" alt="kissing" title="kissing" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':kissing_heart:';return false;"><img class="emoji" src="images/kissing_heart.png" alt="kissing heart" title="kissing heart" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':laughing:';return false;"><img class="emoji" src="images/laughing.png" alt="laughing" title="laughing" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':neutral_face:';return false;"><img class="emoji" src="images/neutral_face.png" alt="neutral face" title="neutral face" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':rage:';return false;"><img class="emoji" src="images/rage.png" alt="rage" title="rage" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':relaxed:';return false;"><img class="emoji" src="images/relaxed.png" alt="relaxed" title="relaxed" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':relieved:';return false;"><img class="emoji" src="images/relieved.png" alt="relieved" title="relieved" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':rofl:';return false;"><img class="emoji" src="images/rofl.png" alt="rofl" title="rofl" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':rolling_eyes:';return false;"><img class="emoji" src="images/rolling_eyes.png" alt="rolling eyes" title="rolling eyes" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':scream:';return false;"><img class="emoji" src="images/scream.png" alt="scream" title="scream" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':sleeping:';return false;"><img class="emoji" src="images/sleeping.png" alt="sleeping" title="sleeping" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':slight_frown:';return false;"><img class="emoji" src="images/slight_frown.png" alt="slight frown" title="slight frown" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':slight_smile:';return false;"><img class="emoji" src="images/slight_smile.png" alt="slight smile" title="slight smile" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':smiley:';return false;"><img class="emoji" src="images/smiley.png" alt="smiley" title="smiley" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':smiling_imp:';return false;"><img class="emoji" src="images/smiling_imp.png" alt="smiling imp" title="smiling imp" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':smirk:';return false;"><img class="emoji" src="images/smirk.png" alt="smirk" title="smirk" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':sob:';return false;"><img class="emoji" src="images/sob.png" alt="sob" title="sob" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':stuck_out_tongue:';return false;"><img class="emoji" src="images/stuck_out_tongue.png" alt="stuck out tongue" title="stuck out tongue" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':stuck_out_tongue_winking_eye:';return false;"><img class="emoji" src="images/stuck_out_tongue_winking_eye.png" alt="stuck out tongue winking eye" title="stuck out tongue winking eye" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':sunglasses:';return false;"><img class="emoji" src="images/sunglasses.png" alt="sunglasses" title="sunglasses" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':sweat:';return false;"><img class="emoji" src="images/sweat.png" alt="sweat" title="sweat" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':sweat_smile:';return false;"><img class="emoji" src="images/sweat_smile.png" alt="sweat smile" title="sweat smile" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':tired_face:';return false;"><img class="emoji" src="images/tired_face.png" alt="tired face" title="tired face" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':triumph:';return false;"><img class="emoji" src="images/triumph.png" alt="triumph" title="triumph" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':unamused:';return false;"><img class="emoji" src="images/unamused.png" alt="unamused" title="unamused" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':wink:';return false;"><img class="emoji" src="images/wink.png" alt="wink" title="wink" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':worried:';return false;"><img class="emoji" src="images/worried.png" alt="worried" title="worried" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':yum:';return false;"><img class="emoji" src="images/yum.png" alt="yum" title="yum" align="top"></a>
+<a href="#" onclick="document.getElementById('comment').value += ':zipper_mouth:';return false;"><img class="emoji" src="images/zipper_mouth.png" alt="zipper mouth" title="zipper mouth" align="top"></a>
+</div>
+<br>
+<button name="submit" class="btn btn-success" type="submit">Submit</button>
+</form>
+<br>
+    {% for msg in object_list %}
+        <div class="panel panel-info"><div class="panel-heading"><h3 class="h3"><strong>{{ msg.name }}</strong></h3>{{ msg.datetime_created }}</div><div class="panel-body">{{ msg.comment }}</div></div>
+    {% endfor %}
+</div>
+</body>
+</html>
