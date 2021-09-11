@@ -39,7 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
-    'django.contrib.sites'
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.vk',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 
 
 ]
@@ -68,7 +74,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'constance.context_processors.config',
-                # 'django.template.context_processors.request',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -135,12 +141,37 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 2
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 SOCIALACCOUNT_PROVIDERS = {
     'vk': {
         'APP': {
-            'client_id': 'LlTfk1VoBLiUMcHyXoqQ',
-            'secret': 'b7d76441b7d76441b7d7644158b7ae5ac6bb7d7b7d76441d6e0ce59c5d75915ba8160c8',
+            'client_id': '7945863',
+            'secret': 'xp47nRhoIWIMXGKbhwj3',
+            'key': '',
+        }
+    },
+    'google': {
+        'APP': {
+            'client_id': '21218215309-atqlp3qo32i7km8bp0grr7ts17jrglhc.apps.googleusercontent.com',
+            'secret': 'GjUXu0Ll_TjonXga75bW5LSs',
+            'key': '',
+        }
+    },
+    'facebook': {
+        'APP': {
+            'client_id': '2943947822515443',
+            'secret': 'f52dcfc04dc848ffc93452eec7630c99',
             'key': '',
         }
     }
 }
+
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_ON_GET = True

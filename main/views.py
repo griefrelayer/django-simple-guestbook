@@ -4,6 +4,7 @@ from django.shortcuts import reverse
 from django.http import HttpResponseRedirect
 from .models import Messages
 from .utils import replace, sanitize, replace_image_with_smiles
+from django.core.exceptions import PermissionDenied
 
 
 class IndexView(CreateView, ListView):
@@ -35,6 +36,12 @@ class DeleteMessageView(DeleteView):
 
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        if self.request.user.is_staff:
+            return super().post(*args, **kwargs)
+        else:
+            raise PermissionDenied
 
     def get_success_url(self):
         return reverse('index_page')

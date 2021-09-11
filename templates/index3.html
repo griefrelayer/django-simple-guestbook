@@ -23,7 +23,7 @@ body {
 	background: #F7F7F7;
 	padding: 20px;
 	width: 700px;
-	height: 450px;
+	display: inline-block;
 }
 
 #backgroundtext {
@@ -82,6 +82,7 @@ body {
 	display: inline-block;
 	margin: 10px;
 	margin-top: 4px;
+	margin-left: 0px;
 }
 
 .starrr a {
@@ -92,7 +93,7 @@ body {
 	text-decoration: none; }
 
 .input-icons {
-	margin-top: 36px;
+	margin-top: 10px;
 }
 
 .input-icons i {
@@ -149,9 +150,46 @@ body {
 	width: 720px;
 }
 
-.comment-heading h3{
+.comment-heading{
 	margin: 0px;
-	width: 50%;
+	display: flex;
+}
+
+.comment-heading-name {
+	flex: 1;
+	margin-top: -8px;
+	font-size: 18px;
+}
+
+#allauth-providers {
+	position: absolute;
+	top: 292px;
+	left: 50px;
+}
+
+.prescriptions {
+	font-size:12px;
+	display: flex;
+	width: 450px;
+	margin-left: 30px;
+	margin-top: 10px;
+}
+
+#pr1 {
+	margin:0px;
+	width: 200px;
+	flex: 1;
+}
+
+#pr2 {
+	margin:0px;
+	width: 200px;
+	float: right;
+}
+
+#user_logged_in {
+	margin-left: 20px;
+	margin-top: 15px;
 }
 </style>
 
@@ -216,12 +254,36 @@ body {
 				<a href="#"><img id="yum" src="{% static 'images/yum.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
 				<a href="#"><img id="zipper_mouth" src="{% static 'images/zipper_mouth.png' %}" width="28" height="28" onclick="insertSmile(this.id)"></a>
 			</div>
-				<div class="formdiv-2 input-icons">
-					<i class="fal fa-user icon user" aria-hidden="true"></i>
-					<input type="text" class="inputtype" name="name" placeholder="Ваше имя">
-					<i class="fal fa-envelope icon envelope" aria-hidden="true"></i>
-					<input type="text" class="inputtype" name="email" placeholder="Почта">
+				{% if user.is_authenticated %}
+				<div id="user_logged_in">
+					<strong>{% if user.first_name or user.last_name %}{{ user.first_name }} {{ user.last_name }}{% else %}{{ user.username }}{% endif %}</strong> | <a href="/accounts/logout/">Выйти</a>
 				</div>
+
+				{% if user.first_name or user.last_name %}
+				<input type="hidden" name="name" value="{{ user.first_name }} {{ user.last_name }}">{% else %}<input type="hidden" name="name" value="{{ user.username }}">{% endif %}
+				<input type="hidden" name="email" value="socialaccount@email.com">
+				{% else %}
+					<div class="prescriptions">
+						<div id="pr1">
+							Зайти через соцсеть
+						</div>
+						<div id="pr2">
+							Опубликовать как гость
+						</div>
+					</div>
+
+					<div id="allauth-providers">
+						<a onclick="setLocalStorage('comment_text', document.getElementById('commentbackgroundtext').innerHTML)" href="/accounts/vk/login/?process=login"><img src="{% static 'oauth/vk.png' %}" height="40" width="40"></a>
+						<a onclick="setLocalStorage('comment_text', document.getElementById('commentbackgroundtext').innerHTML)" href="/accounts/google/login/?process=login"><img src="{% static 'oauth/google.png' %}" height="45" width="45" style="margin-left: 3px; margin-right:-3px;"></a>
+						<a onclick="setLocalStorage('comment_text', document.getElementById('commentbackgroundtext').innerHTML)" href="/accounts/facebook/login/?process=login"><img src="{% static 'oauth/facebook.png' %}" height="55" width="55"></a>
+					</div>
+					<div class="formdiv-2 input-icons">
+						<i class="fal fa-user icon user" aria-hidden="true"></i>
+						<input type="text" class="inputtype" name="name" placeholder="Ваше имя">
+						<i class="fal fa-envelope icon envelope" aria-hidden="true"></i>
+						<input type="text" class="inputtype" name="email" placeholder="Почта">
+					</div>
+				{% endif %}
 			</div>
 			<div id="submit-btn" onclick="submitComment()">Опубликовать</div>
 		{% csrf_token %}
@@ -234,13 +296,13 @@ body {
 				<div class='starrr'>{% for r in 0|range:msg.rating %}<a href="#" class="fa fa-star"></a>{% endfor %}</div>
 			</div>
 			<div class="comment-heading">
-				<h3 class="h3"><strong>{{ msg.name }}</strong></h3>
-				{{ msg.datetime_created }}
+				<div class="comment-heading-name"><strong>{{ msg.name }}</strong></div>
+				<div class="comment-heading-date">{{ msg.datetime_created.timestamp|time_since }}</div>
 			</div>
 			<div class="comment-body">
 				{{ msg.comment|safe }}
 			</div>
-			{% if user.is_authenticated %}
+			{% if user.is_authenticated and user.is_staff %}
 				<div class="admin-message" style="margin-left:650px">
 					<a href="/delete/{{ msg.id }}">удалить</a>
 				</div>
@@ -248,11 +310,32 @@ body {
 		</div>
     	{% endfor %}
 	</div>
+
+		<script src="{% static 'js/jquery.js' %}"></script>
 		<script>
 			var bt = document.getElementById('backgroundtext');
 			var cbt = document.getElementById('commentbackgroundtext');
-
 			var bgtext = '<p id="backgroundtext">Оставить отзыв</p>';
+
+			var today = new Date();
+			var expiry = new Date(today.getTime() + 30 * 24 * 3600 * 1000); // plus 30 days
+
+			function setLocalStorage(name, value) {
+				localStorage.setItem(name, value);
+			}
+
+			function getLocalStorage(name) {
+				return localStorage.getItem(name);
+			}
+
+			var previous_comment_text = getLocalStorage('comment_text');
+
+			if(previous_comment_text) {
+				cbt.innerHTML = previous_comment_text;
+			}
+			else {
+				cbt.innerHTML = bgtext;
+			}
 
 			function backgroundtextFocus() {
 				if(typeof(bt) == 'object' && cbt.innerHTML == bgtext ){
@@ -264,6 +347,7 @@ body {
 				if(cbt.innerHTML == ''){
 					cbt.innerHTML = bgtext;
 				}
+				setLocalStorage('comment_text', cbt.innerHTML)
 			}
 
 			function insertSmile(smile_id) {
@@ -282,8 +366,8 @@ body {
 				document.getElementById('comment-input').value = document.getElementById('commentbackgroundtext').innerHTML;
 				document.getElementById('comment-form').submit();
 			}
+
 		</script>
-		<script src="{% static 'js/jquery.js' %}"></script>
 
 <!-- Stars -->
 		<script>
