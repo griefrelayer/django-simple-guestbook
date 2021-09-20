@@ -152,22 +152,22 @@ AUTHENTICATION_BACKENDS = [
 SOCIALACCOUNT_PROVIDERS = {
     'vk': {
         'APP': {
-            'client_id': '7945863',
-            'secret': 'xp47nRhoIWIMXGKbhwj3',
+            'client_id': '',
+            'secret': '',
             'key': '',
         }
     },
     'google': {
         'APP': {
-            'client_id': '21218215309-atqlp3qo32i7km8bp0grr7ts17jrglhc.apps.googleusercontent.com',
-            'secret': 'GjUXu0Ll_TjonXga75bW5LSs',
+            'client_id': '',
+            'secret': '',
             'key': '',
         }
     },
     'facebook': {
         'APP': {
-            'client_id': '2943947822515443',
-            'secret': 'f52dcfc04dc848ffc93452eec7630c99',
+            'client_id': '3',
+            'secret': '',
             'key': '',
         }
     }
