@@ -75,6 +75,20 @@ body {
 	color: #AAA;
 }
 
+.profile-image {
+    display: inline-block;
+    position: relative;
+    right: 30px;
+    top: 60px;
+    margin: -60px;
+}
+
+.profile-image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
+
 .starrr {
 	display: inline-block;
 	margin: 10px;
@@ -317,6 +331,13 @@ body {
 	<div class="comment-wrapper">
 		{% for msg in object_list %}
 		<div class="comment">
+		    <div class="profile-image">
+		    {% if msg.user %}
+		        <img src="{{ msg.user|get_profile_pic_src }}">
+		    {% else %}
+		        <img src="/static/oauth/anonymous.png">
+		    {% endif %}
+		    </div>
 			<div class="comment-rating">
 				<div class='starrr'>{% for r in 0|range:msg.rating %}<a href="#" class="fa fa-star"></a>{% endfor %}</div>
 			</div>
