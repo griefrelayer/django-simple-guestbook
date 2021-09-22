@@ -15,7 +15,9 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -24,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-qpl4-r*e99pwv@94yiz3_ut3k-xpr#&tp_#@n7g^wj7bu0nhmn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', 'rockit-school.ru', 'zelll.beget.tech']
 
@@ -152,26 +154,27 @@ AUTHENTICATION_BACKENDS = [
 SOCIALACCOUNT_PROVIDERS = {
     'vk': {
         'APP': {
-            'client_id': '7945863',
-            'secret': 'xp47nRhoIWIMXGKbhwj3',
+            'client_id': '',
+            'secret': '',
             'key': '',
         }
     },
     'google': {
         'APP': {
-            'client_id': '21218215309-atqlp3qo32i7km8bp0grr7ts17jrglhc.apps.googleusercontent.com',
-            'secret': 'GjUXu0Ll_TjonXga75bW5LSs',
+            'client_id': '',
+            'secret': '',
             'key': '',
         }
     },
     'facebook': {
         'APP': {
-            'client_id': '2943947822515443',
-            'secret': 'f52dcfc04dc848ffc93452eec7630c99',
+            'client_id': '',
+            'secret': '',
             'key': '',
         }
     }
 }
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/guestbook/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/guestbook/'
 ACCOUNT_LOGOUT_ON_GET = True

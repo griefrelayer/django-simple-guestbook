@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from main.views import IndexView, DeleteMessageView
 from django.contrib.auth.decorators import login_required
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('/guestbook/', IndexView.as_view(), name='index_page'),
+    path('guestbook/', IndexView.as_view(), name='index_page'),
     re_path(r'^delete/(?P<pk>\d+)$', login_required(DeleteMessageView.as_view(), login_url='/admin/login/'), name='delete_page'),
-]
+] + static('/static/', document_root='/home/z/zelll/zelll.beget.tech/guestbook/static/')

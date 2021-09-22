@@ -11,7 +11,7 @@ class IndexView(CreateView, ListView):
     template_name = 'index3.html'
     model = Messages
     fields = ['name', 'email', 'comment', 'rating']
-    paginate_by = 10
+    paginate_by = '10'
 
     def get_success_url(self):
         return reverse('index_page')

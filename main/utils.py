@@ -20,4 +20,4 @@ def replace_image_with_smiles(text):
 
 
 def sanitize(text):
-    return re.sub(r'[^\w ,.():-]*', '', text)
+    return re.sub(r'[^\w \n,.?!();:-]*', '', text).replace('div','<br>').replace('nbsp;', '')
