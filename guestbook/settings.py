@@ -23,7 +23,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-qpl4-r*e99pwv@94yiz3_ut3k-xpr#&tp_#@n7g^wj7bu0nhmn'
+SECRET_KEY = 'django-secure-qpl4-r*e99pwv@94yiz3_ut3k-xpr#&tp_#@n7g^wj7bu0nhmn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -154,22 +154,22 @@ AUTHENTICATION_BACKENDS = [
 SOCIALACCOUNT_PROVIDERS = {
     'vk': {
         'APP': {
-            'client_id': '',
-            'secret': '',
+            'client_id': '7945863',
+            'secret': 'xp47nRhoIWIMXGKbhwj3',
             'key': '',
         }
     },
     'google': {
         'APP': {
-            'client_id': '',
-            'secret': '',
+            'client_id': '21218215309-atqlp3qo32i7km8bp0grr7ts17jrglhc.apps.googleusercontent.com',
+            'secret': 'GjUXu0Ll_TjonXga75bW5LSs',
             'key': '',
         }
     },
     'facebook': {
         'APP': {
-            'client_id': '',
-            'secret': '',
+            'client_id': '2943947822515443',
+            'secret': 'f52dcfc04dc848ffc93452eec7630c99',
             'key': '',
         }
     }

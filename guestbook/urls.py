@@ -24,6 +24,6 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('guestbook/', IndexView.as_view(), name='index_page'),
+    path('reviews.html', IndexView.as_view(), name='index_page'),
     re_path(r'^delete/(?P<pk>\d+)$', login_required(DeleteMessageView.as_view(), login_url='/admin/login/'), name='delete_page'),
-] + static('/static/', document_root='/home/z/zelll/zelll.beget.tech/guestbook/static/')
+] + static('/static/', document_root='/home/z/zelll/zelll.beget.tech/public_html/static/')

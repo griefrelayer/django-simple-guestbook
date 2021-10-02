@@ -54,7 +54,7 @@ class DeleteMessageView(DeleteView):
         return self.post(*args, **kwargs)
 
     def post(self, *args, **kwargs):
-        if self.request.user.is_staff:
+        if self.request.user.is_staff or self.request.user.id == Messages.objects.get(id=kwargs['pk']).user_id:
             return super().post(*args, **kwargs)
         else:
             raise PermissionDenied
